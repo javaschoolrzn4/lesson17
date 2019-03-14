@@ -11,6 +11,7 @@ public class HasQuarter implements State {
     }
 
     GumballMachine machine;
+
     @Override
     public void insertQuarter() {
         System.out.println("Монетка уже брошена");
@@ -25,7 +26,11 @@ public class HasQuarter implements State {
     @Override
     public void turnCrank() {
         System.out.println("Рычаг дернут");
-            machine.setState(machine.getSoldState());
+        int flag = random.nextInt(10);
+        if (flag == 9) {
+            machine.setState(machine.getWinState());
+        }
+        machine.setState(machine.getSoldState());
     }
 
     @Override
